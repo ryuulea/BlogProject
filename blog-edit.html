@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ブログ編集</title>
+  <link rel="stylesheet" href="blog-style.css">
+  <link rel="stylesheet" href="nav-style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="menu-left">LeaRyuu</div>
+      <nav class="menu-right">
+        <a href="home.html">Home</a>
+        <a href="blog-register.html">投稿する</a>
+        <a href="blog-list.html">一覧表示</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1 style="text-align:center; margin-bottom:40px;">ブログ編集</h1>
+
+
+    <form action="/blog/edit" method="post">
+      <label for="title">タイトル：</label>
+      <input type="text" id="title" name="title" value="お正月" required>
+
+      <label for="category">カテゴリ：</label>
+      <input type="text" id="category" name="category" value="焼肉" required>
+
+      <label for="image">画像URL：</label>
+      <input type="text" id="image" name="image" value="サンプル画像URL.jpg">
+
+      <label for="article">本文：</label>
+      <textarea id="article" name="article" rows="6" required>今年も一年頑張りましょう！</textarea>
+
+      <button type="submit">更新する</button>
+      <button type="button" onclick="location.href='blog-list.html'">戻る</button>
+    </form>
+  </main>
+
+  <p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+</html>

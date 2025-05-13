@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Register</title>
+    <link rel="stylesheet" href="blog-style.css">
+    <link rel="stylesheet" href="nav-style.css">
+
+
+</head>
+<body>
+   
+    <header>
+        <div class="header-container">
+            <div class="menu-left">LeaRyuu</div>
+            <nav class="menu-right">
+                <a href="home.html">Home</a>
+                <a href="blog-register.html">投稿する</a>
+                <a href="blog-edit.html">編集する</a>
+                <a href="/logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+    
+
+    <form action="/blog/register" method="post">
+       
+       
+
+        <h1>ブログ投稿</h1>
+
+        <label for="title">タイトル：</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="category">カテゴリ：</label>
+        <input type="text" id="category" name="category" required><br><br>
+
+        <label for="image">画像URL：</label>
+        <input type="text" id="image" name="image"><br><br>
+
+        <label for="article">記事本文：</label><br>
+        <textarea id="article" name="article" rows="8" cols="40" required></textarea><br><br>
+
+        <button type="submit">投稿する</button>
+    </form>
+
+    <p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+</html>
