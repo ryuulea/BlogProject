@@ -4,7 +4,7 @@ header {
     left: 0;
     right: 0;
     background-color: #ffffffcc;
-    padding: 10px 30px;
+    padding: 20px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,16 +23,17 @@ header .header-container {
 /* 左側（LeaRyuuロゴ） */
 .menu-left {
     font-weight: bold;
-    font-size: 18px;
+    font-size:  30px;
+    color: #e684b0;
 }
 
 /* 右側（メニューリンク） */
 .menu-right a {
     margin: 0 15px;
     text-decoration: none;
-    color: #333;
+    color: #eb89b5;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 .menu-right a:hover {
@@ -41,5 +42,5 @@ header .header-container {
 
 /* ページ内容の上余白 */
 body {
-    padding-top: 70px;
+    padding-top: 90px;
 }
