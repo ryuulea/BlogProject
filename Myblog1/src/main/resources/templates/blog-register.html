@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ブログ編集</title>
+  <title>ブログ投稿</title>
   <link rel="stylesheet" href="blog-style.css">
   <link rel="stylesheet" href="nav-style.css">
 </head>
@@ -20,36 +20,26 @@
   </header>
 
   <main>
-    <h1>ブログ編集</h1>
-    <div class="edit-card">
-      <form id="edit-form" action="/blog/edit" method="post" enctype="multipart/form-data">
+    <h1>ブログ投稿</h1>
+    <div class="register-card">
+      <form id="register-form" action="/blog/register" method="post" enctype="multipart/form-data">
         <label for="title">タイトル：</label>
-        <input type="text" id="title" name="title" value="" required>
+        <input type="text" id="title" name="title" required>
 
         <label for="category">カテゴリ：</label>
-        <input type="text" id="category" name="category" value="" required>
+        <input type="text" id="category" name="category" required>
 
         <label for="image">画像アップロード：</label>
         <input type="file" id="image" name="image" accept="image/*">
 
-        <label for="article">本文：</label>
-        <textarea id="article" name="article" rows="6" required></textarea>
+        <label for="article">記事本文：</label>
+        <textarea id="article" name="article" rows="8" required></textarea>
+
         <div class="form-buttons">
-          <button type="submit">更新する</button>
+          <button type="submit">投稿する</button>
           <button type="button" class="back-btn" onclick="history.back();">戻る</button>
         </div>
       </form>
-
-      <form id="delete-form" action="/blog/delete" method="post">
-        <input type="hidden" name="id" value="">
-        <button type="submit" form="delete-form">削除する</button>
-       
-      </form>
-
-      <div class="form-buttons">
-      
-       
-      </div>
     </div>
   </main>
 
