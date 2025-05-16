@@ -34,6 +34,7 @@ public class AccountLoginController {
 			return "login";
 		} else {
 			session.setAttribute("loginAccountInfo", account);
+			session.setAttribute("accountId", account.getAccountId()); 
 			// ログイン成功→リダイレクト
 			return "redirect:/welcome";
 		}
