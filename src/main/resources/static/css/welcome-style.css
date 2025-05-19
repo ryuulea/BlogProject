@@ -1,0 +1,56 @@
+/* 全画面グラデーション背景 */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    background: linear-gradient(135deg, #f8c3cc, #c3d4fb, #e1c3fb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+  }
+  
+  /* 中央コンテナ */
+  .welcome-container {
+    text-align: center;
+    color: rgb(239, 239, 202);
+  }
+  
+  /* 手書き風フォント & サイズ */
+  .welcome-container h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+  }
+  
+  .welcome-container p {
+    font-size: 2.5rem;
+    margin: 10px 0 30px;
+    font-family: 'Comic Sans MS', cursive;
+  }
+  
+  /* ボタン共通スタイル */
+  .welcome-container button {
+    margin: 0 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: 2px solid white;
+    border-radius: 999px;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  /* ホバー時 */
+  .welcome-container button:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+  
+  
+  /* Logout 按钮做细微区分 */
+  .welcome-container button.logout {
+    border-color: #ffffff;
+  }
+  

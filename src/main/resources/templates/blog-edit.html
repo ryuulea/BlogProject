@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="UTF-8">
+  	<title>ブログ編集</title>
+  	<link rel="stylesheet" th:href="@{/css/blog-style.css}">
+  	<link rel="stylesheet" th:href="@{/css/nav-style.css}">
+</head>
+<body>
+  	<header>
+   	 <div class="header-container">
+     	 <div class="menu-left">LeaRyuu</div>
+		 <nav class="menu-right">
+		   <a th:href="@{/home}">Home</a>
+		   <a th:href="@{/profile}">自己紹介</a>
+		   <a th:href="@{/blog/register}">投稿する</a>
+		   <a th:href="@{/blog/list}">一覧表示</a>
+		   <a th:href="@{/logout}">Logout</a>
+		 </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>ブログ編集</h1>
+    <div class="edit-card">
+		<form id="edit-form" th:action="@{/blog/edit}" method="post" enctype="multipart/form-data">
+		  <input type="hidden" name="blogId" th:value="${blog.blogId}" />
+
+		  <label for="title">タイトル：</label>
+		  <input type="text" id="title" name="title" th:value="${blog.blogTitle}" required>
+
+		  <label for="category">カテゴリ：</label>
+		  <input type="text" id="category" name="category" th:value="${blog.categoryName}" required>
+
+		  <label for="image">画像アップロード：</label>
+		  <input type="file" id="image" name="image" accept="image/*">
+		  <p>現在の画像: <span th:text="${blog.blogImage}"></span></p>
+
+		  <label for="article">本文：</label>
+		  <textarea id="article" name="article" rows="6" th:text="${blog.article}" required></textarea>
+
+		  <div class="form-buttons">
+		    <button type="submit">更新する</button>
+		    <button type="button" class="back-btn" onclick="history.back();">戻る</button>
+		  </div>
+		</form>
+
+		<form id="delete-form" th:action="@{/blog/delete}" method="post" onsubmit="return confirm('本当に削除しますか？');">
+		  <input type="hidden" name="id" th:value="${blog.blogId}" />
+		  <button type="submit" form="delete-form">削除する</button>
+		</form>
+
+
+      <div class="form-buttons">
+      
+       
+      </div>
+    </div>
+  </main>
+
+  <p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ブログ記事一覧</title>
+	<link rel="stylesheet" th:href="@{/css/blog-style.css}">
+	<link rel="stylesheet" th:href="@{/css/nav-style.css}">
+</head>
+
+<body>
+	<header>
+		<div class="header-container">
+			<div class="menu-left">LeaRyuu</div>
+			<nav class="menu-right">
+			  <a th:href="@{/home}">Home</a>
+			  <a th:href="@{/profile}">自己紹介</a>
+			  <a th:href="@{/blog/register}">投稿する</a>
+			  <a th:href="@{/blog/list}">一覧表示</a>
+			  <a th:href="@{/logout}">Logout</a>
+			</nav>
+		</div>
+	</header>
+
+	<main>
+		<h1>ブログ記事一覧</h1>
+		<div th:each="blog : ${blogs}" class="blog-item">
+			<img th:src="@{/images/{img}(img=${blog.blogImage})}" alt="画像" class="item-image">
+			<h2 th:text="${blog.blogTitle}">サンプル記事</h2>
+			<p><strong>カテゴリ：</strong><span th:text="${blog.categoryName}">サンプルカテゴリ</span></p>
+			<p><strong>本文：</strong><span th:text="${blog.article}">ここに記事の内容が表示されます。</span></p>
+			<div class="form-buttons">
+				<a th:href="@{'/blog/edit'(id=${blog.blogId})}">
+					<button type="button">編集する</button>
+
+				</a>
+			</div>
+
+		</div>
+
+	</main>
+
+
+	<p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+
+</html>
