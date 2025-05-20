@@ -17,130 +17,140 @@ import java.util.List;
 @Controller
 public class BlogController {
 
-    @Autowired
-    private BlogDao blogDao;
+	@Autowired
+	private BlogDao blogDao;
 
-    // 投稿画面
-    @GetMapping("/blog/register")
-    public String showRegisterPage() {
-        return "blog-register";
-    }
+	// ブログ投稿画面の表示
+	@GetMapping("/blog/register")
+	public String showRegisterPage() {
+		return "blog-register";
+	}
 
-    // 投稿処理
-    @PostMapping("/blog/register")
-    public String registerBlog(@RequestParam("title") String title,
-                               @RequestParam("category") String category,
-                               @RequestParam("image") MultipartFile image,
-                               @RequestParam("article") String article,
-                               HttpSession session) throws IOException {
+	// ブログ投稿処理
+	@PostMapping("/blog/register")
+	public String registerBlog(@RequestParam("title") String title,
+	                            @RequestParam("category") String category,
+	                            @RequestParam("image") MultipartFile image,
+	                            @RequestParam("article") String article,
+	                            HttpSession session) throws IOException {
 
-        Blog blog = new Blog();
-        blog.setBlogTitle(title);
-        blog.setCategoryName(category);
-        blog.setArticle(article);
+		Blog blog = new Blog();
+		blog.setBlogTitle(title);
+		blog.setCategoryName(category);
+		blog.setArticle(article);
 
-        if (!image.isEmpty()) {
-            String imageName = image.getOriginalFilename();
+		// 画像が選択されている場合、保存処理
+		if (!image.isEmpty()) {
+			String imageName = image.getOriginalFilename();
+			String uploadPath = new File("src/main/resources/static/images").getAbsolutePath();
+			File saveFile = new File(uploadPath, imageName);
+			image.transferTo(saveFile);
+			blog.setBlogImage(imageName);
+		}
 
-            // 保存 static/images
-            String uploadPath = new File("src/main/resources/static/images").getAbsolutePath();
-            File saveFile = new File(uploadPath, imageName);
-            image.transferTo(saveFile);
+		// ログイン中のユーザーIDを取得
+		Long accountId = (Long) session.getAttribute("accountId");
+		if (accountId == null) {
+			return "redirect:/login";
+		}
+		blog.setAccountId(accountId);
 
-            blog.setBlogImage(imageName);  
-        }
+		// DBに保存
+		blogDao.save(blog);
 
-        Long accountId = (Long) session.getAttribute("accountId");
-        if (accountId == null) {
-            return "redirect:/login";
-        }
+		return "redirect:/blog/list";
+	}
 
-        blog.setAccountId(accountId);
-        blogDao.save(blog);
+	// ブログ一覧画面の表示
+	@GetMapping("/blog/list")
+	public String showBlogList(Model model, HttpSession session) {
+		Account loginAccount = (Account) session.getAttribute("loginAccountInfo");
+		if (loginAccount == null) {
+			return "redirect:/login";
+		}
 
-        return "redirect:/blog/list";
-    }
+		List<Blog> blogList = blogDao.findAll();
+		model.addAttribute("blogs", blogList);
+		model.addAttribute("loginAccountInfo", loginAccount);
 
-    @GetMapping("/blog/list")
-    public String showBlogList(Model model, HttpSession session) {
-        Account loginAccount = (Account) session.getAttribute("loginAccountInfo");
-        if (loginAccount == null) {
-            return "redirect:/login";
-        }
+		return "blog-list";
+	}
 
-        // ブログ一覧取得
-        List<Blog> blogList = blogDao.findAll(); 
-        model.addAttribute("blogs", blogList);  
-        model.addAttribute("loginAccountInfo", loginAccount); 
+	// ブログ編集画面の表示
+	@GetMapping("/blog/edit")
+	public String showEditForm(@RequestParam("id") Long blogId, Model model) {
+		Blog blog = blogDao.findById(blogId).orElse(null);
 
-        return "blog-list"; 
-    }
+		// 該当ブログが存在しない場合は一覧へリダイレクト
+		if (blog == null) {
+			return "redirect:/blog/list";
+		}
 
- // 編集画面の表示処理
-    @GetMapping("/blog/edit")
-    public String showEditForm(@RequestParam("id") Long blogId, Model model) {
-        Blog blog = blogDao.findById(blogId).orElse(null);
+		model.addAttribute("blog", blog);
+		return "blog-edit";
+	}
 
-        // もしID存在しない場合、ブログリストに戻り
-        if (blog == null) {
-            return "redirect:/blog/list";
-        }
+	// ブログ編集の更新処理
+	@PostMapping("/blog/edit")
+	public String updateBlog(@RequestParam("blogId") Long id,
+	                         @RequestParam("title") String title,
+	                         @RequestParam("category") String category,
+	                         @RequestParam("article") String article,
+	                         @RequestParam("image") MultipartFile image) throws IOException {
 
-        model.addAttribute("blog", blog);
-        return "blog-edit";
-    }
+		Blog blog = blogDao.findById(id).orElse(null);
+		if (blog != null) {
+			blog.setBlogTitle(title);
+			blog.setCategoryName(category);
+			blog.setArticle(article);
 
+			// 画像が新しくアップロードされた場合のみ更新
+			if (!image.isEmpty()) {
+				String imageName = image.getOriginalFilename();
+				String uploadPath = new File("src/main/resources/static/images").getAbsolutePath();
+				File saveFile = new File(uploadPath, imageName);
+				image.transferTo(saveFile);
+				blog.setBlogImage(imageName);
+			}
 
-    // 編集処理（更新処理）
-    @PostMapping("/blog/edit")
-    public String updateBlog(@RequestParam("blogId") Long id,
-                             @RequestParam("title") String title,
-                             @RequestParam("category") String category,
-                             @RequestParam("article") String article,
-                             @RequestParam("image") MultipartFile image) throws IOException {
+			blogDao.save(blog);
+		}
 
-        Blog blog = blogDao.findById(id).orElse(null);
-        if (blog != null) {
-            blog.setBlogTitle(title);
-            blog.setCategoryName(category);
-            blog.setArticle(article);
+		return "redirect:/blog/list";
+	}
 
-            if (!image.isEmpty()) {
-                String imageName = image.getOriginalFilename();
+	// トップページの表示（ログイン後）
+	@GetMapping("/home")
+	public String home(HttpSession session, Model model) {
+		Account loginAccount = (Account) session.getAttribute("loginAccountInfo");
+		if (loginAccount == null) {
+			return "redirect:/login";
+		}
 
-                // 保存新しい画像
-                String uploadPath = new File("src/main/resources/static/images").getAbsolutePath();
-                File saveFile = new File(uploadPath, imageName);
-                image.transferTo(saveFile);
+		model.addAttribute("loginAccountInfo", loginAccount);
+		return "welcome";
+	}
 
-             // 画像ファイル名更新
-                blog.setBlogImage(imageName);  
-            }
+	// ブログ削除処理
+	@PostMapping("/blog/delete")
+	public String deleteBlog(@RequestParam("id") Long blogId) {
+		blogDao.deleteById(blogId);
+		return "redirect:/blog/list";
+	}
 
-            // DB更新
-            blogDao.save(blog); 
-        }
+	// 自己紹介ページの表示
+	@GetMapping("/profile")
+	public String showProfilePage() {
+		return "profile";
+	}
 
-     // 一覧へリダイレクト
-        return "redirect:/blog/list";  
-    }
-    
-    @GetMapping("/home")
-    public String home(HttpSession session, Model model) {
-        Account loginAccount = (Account) session.getAttribute("loginAccountInfo");
-        if (loginAccount == null) {
-            return "redirect:/login";
-        }
-
-        model.addAttribute("loginAccountInfo", loginAccount); 
-        return "welcome"; 
-    }
- // 削除処理
-    @PostMapping("/blog/delete")
-    public String deleteBlog(@RequestParam("id") Long blogId) {
-        blogDao.deleteById(blogId);
-        return "redirect:/blog/list";
-    }
-
-    
+	// ブログ検索機能（タイトル・記事の部分一致）
+	@GetMapping("/blog/search")
+	public String searchBlogs(@RequestParam("keyword") String keyword, Model model) {
+	    List<Blog> results = blogDao.findByBlogTitleContainingOrArticleContaining(keyword, keyword);
+	    model.addAttribute("blogs", results);
+	    model.addAttribute("searchKeyword", keyword);
+	    return "blog-list";
+	}
 }
+

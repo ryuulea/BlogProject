@@ -1,4 +1,4 @@
-
+/*全ページ共通の基本設定*/
 html, body {
     height: 100%;
     margin: 0;
@@ -6,18 +6,16 @@ html, body {
   body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh;  
     background: linear-gradient(to bottom right, #a779cc, #84b0dc, #eab9dc);
     font-family: 'Comic Sans MS', 'Arial', sans-serif;
     padding-top: 80px;
   }
-  
-
   main {
     flex: 1;
   }
   
-
+/*全ページ共通タイトル（h1）スタイル*/
   h1 {
     text-align: center;
     font-size: 28px;
@@ -236,3 +234,172 @@ html, body {
   border-radius: 10px;
 }
 
+/* === 自己紹介ページ用スタイル === */
+.profile-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.section-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.image-block {
+  width: 30%;
+  text-align: center;
+}
+
+.section-photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+
+.photo-caption {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.text-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.text-block p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: rgb(121, 117, 90);
+}
+
+.final-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.final-section img.section-photo {
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+.final-double-photo {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.final-image-block {
+  width: 300px;
+  text-align: center;
+}
+
+.final-image-block img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.final-message {
+  text-align: center;
+  font-size: 17px;
+  color: #444;
+  margin: 40px 20px 100px;
+  line-height: 1.7;
+}
+.copyright {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #888;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.final-triple-photo {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.final-image-block {
+  width: 280px;  /* 保持三张图刚好一排 */
+  text-align: center;
+}
+
+.final-image-block img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/*ブログ検索機能*/
+/* ブログ一覧タイトルと検索の並列配置 */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+/* 検索フォームのデザイン */
+.search-container form {
+  display: flex;
+  gap: 8px;
+}
+
+.search-container input[type="text"] {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid #c084fc;
+  font-size: 14px;
+}
+
+.search-container button {
+  background: rgb(205, 163, 238);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background: rgb(204, 155, 248);
+}
+.center-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 40px auto 20px;
+  color: #fdf7a5;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}

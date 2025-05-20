@@ -21,5 +21,9 @@ public interface BlogDao extends JpaRepository<Blog, Long>{
 
     // ID指定で1件取得（編集用などに）
     Blog findByBlogId(Long blogId);
+    
+    //検索メソッド追加
+    List<Blog> findByBlogTitleContainingOrArticleContaining(String blogTitle, String article);
+
 
 }

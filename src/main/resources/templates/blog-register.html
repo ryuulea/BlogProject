@@ -12,9 +12,9 @@
       <div class="menu-left">LeaRyuu</div>
 	  <nav class="menu-right">
 	    <a th:href="@{/home}">Home</a>
-		<a th:href="@{/profile}">自己紹介</a>
 	    <a th:href="@{/blog/register}">投稿する</a>
 	    <a th:href="@{/blog/list}">一覧表示</a>
+		<a th:href="@{/profile}">自己紹介</a>
 	    <a th:href="@{/logout}">Logout</a>
 	  </nav>
     </div>
@@ -32,6 +32,10 @@
 
         <label for="image">画像アップロード：</label>
         <input type="file" id="image" name="image" accept="image/*">
+		
+		<label for="video">動画アップロード（任意）：</label>
+		<input type="file" id="video" name="videoFile" accept="video/*">
+
 
         <label for="article">記事本文：</label>
         <textarea id="article" name="article" rows="8" required></textarea>

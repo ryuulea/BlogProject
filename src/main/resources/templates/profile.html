@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自己紹介</title>
+  <link rel="stylesheet" th:href="@{/css/blog-style.css}">
+  <link rel="stylesheet" th:href="@{/css/nav-style.css}">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="menu-left">LeaRyuu</div>
+      <nav class="menu-right">
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/blog/register}">投稿する</a>
+        <a th:href="@{/blog/list}">一覧表示</a>
+        <a th:href="@{/profile}">自己紹介</a>
+        <a th:href="@{/logout}">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+	<h1>自己紹介</h1>
+    <div class="profile-wrapper">
+
+      <div class="section-row">
+        <div class="image-block">
+          <img src="/images/surf.jpg" alt="サーフィン" class="section-photo">
+          <div class="photo-caption">🏄‍♀️ バリ島のサンセットセッション</div>
+        </div>
+        <div class="image-block">
+          <img src="/images/snow.jpg" alt="スノーボード" class="section-photo">
+          <div class="photo-caption">🏂 ニセコの白銀世界でリフレッシュ！</div>
+        </div>
+        <div class="text-block">
+          <p>こんにちは！名前はLIU DONGYUです🌧️</p>
+          <p>趣味はアウトドアスポーツです。特にサーフィンとスノーボード️ 波の音と雪の静けさ、どっちも大好き！</p>
+          <p>サーフィントリップも大好きで、これまでにバリ島、沖縄、奄美、宮崎、伊豆、湘南…たくさんの海でサーフィンしてきました🏄‍♀️</p>
+        </div>
+      </div>
+	  
+      <div class="section-row">
+        <div class="image-block">
+          <img src="/images/cat1.jpg" alt="ゆき" class="section-photo">
+          <div class="photo-caption">😽 甘えん坊のお兄ちゃん：いつもひざの上</div>
+        </div>
+        <div class="image-block">
+          <img src="/images/cat2.jpg" alt="はらみ" class="section-photo">
+          <div class="photo-caption">😼 ツンデレ次男：朝だけ甘えん坊</div>
+        </div>
+        <div class="text-block">
+          <p>動物も大好きで、家では2匹の猫ちゃんと暮らしています🐱</p>
+          <p>最近はずっと家で働いてるから、猫たちがそばにいてくれるだけで、本当に救われてます。癒しパワー最強🐱💓</p>
+          <p>よろしくお願いします♪</p>
+        </div>
+      </div>
+
+	  <div class="final-triple-photo">
+	    <div class="final-image-block">
+	      <img src="/images/cat_play1.jpg" alt="猫たち遊び1" class="section-photo">
+	      <div class="photo-caption">🐾 今日も元気にじゃれ合い中！</div>
+	    </div>
+	    <div class="final-image-block">
+	      <img src="/images/cat_play2.jpg" alt="猫たち遊び2" class="section-photo">
+	      <div class="photo-caption">😼 まるでプロレスのような毎日</div>
+	    </div>
+	    <div class="final-image-block">
+	      <img src="/images/cat_play3.jpg" alt="猫たち遊び3" class="section-photo">
+	      <div class="photo-caption">😻 たまには仲良く並んでまったり〜</div>
+	    </div>
+	  </div>
+
+	  <p class="final-message">
+	    こんな風に、毎日小さな幸せに囲まれながら、自分らしく過ごしています。<br>
+	    ブログを通じて、少しでも誰かの心がほっとできたら嬉しいです。<br>
+	    最後まで読んでくれて、ありがとうございました！✨
+	  </p>
+      </div>
+
+    </div>
+  </main>
+<footer class="copyright">© 2025 LeaRyuu 🐱🐱</footer>
+</body>
+</html>

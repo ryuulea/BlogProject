@@ -14,16 +14,27 @@
 			<div class="menu-left">LeaRyuu</div>
 			<nav class="menu-right">
 			  <a th:href="@{/home}">Home</a>
-			  <a th:href="@{/profile}">自己紹介</a>
 			  <a th:href="@{/blog/register}">投稿する</a>
 			  <a th:href="@{/blog/list}">一覧表示</a>
+			  <a th:href="@{/profile}">自己紹介</a>
 			  <a th:href="@{/logout}">Logout</a>
 			</nav>
 		</div>
 	</header>
 
 	<main>
-		<h1>ブログ記事一覧</h1>
+		<h1 class="center-title">ブログ記事一覧</h1>
+
+		<div class="search-container">
+		  <form th:action="@{/blog/search}" method="get">
+		    <input type="text" name="keyword" placeholder="キーワードで検索" required>
+		    <button type="submit">検索</button>
+		  </form>
+		</div>
+		
+		<p th:if="${#lists.isEmpty(blogs)}" style="text-align: center; color: #999;">
+		  該当する記事が見つかりませんでした 🥲
+		</p>
 		<div th:each="blog : ${blogs}" class="blog-item">
 			<img th:src="@{/images/{img}(img=${blog.blogImage})}" alt="画像" class="item-image">
 			<h2 th:text="${blog.blogTitle}">サンプル記事</h2>
