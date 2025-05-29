@@ -1,0 +1,25 @@
+# 编译文件
+/bin/
+target/
+*.class
+
+# IDE设置
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# 系统垃圾
+.DS_Store
+Thumbs.db
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# 日志文件
+*.log
+
