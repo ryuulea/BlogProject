@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ブログ投稿</title>
+  <link rel="stylesheet" th:href="@{/css/blog-style.css}">
+  <link rel="stylesheet" th:href="@{/css/nav-style.css}">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="menu-left">LeaRyuu</div>
+      <nav class="menu-right">
+<<<<<<< HEAD:Myblog1/src/main/resources/templates/blog-register.html
+        <a href="home.html">Home</a>
+        <a href="blog-register.html">投稿する</a>
+        <a href="blog-list.html">一覧表示</a>
+        <a href="register.html">Logout</a>
+=======
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/blog/register}">投稿する</a>
+        <a th:href="@{/blog/list}">一覧表示</a>
+        <a th:href="@{/profile}">自己紹介</a>
+        <a th:href="@{/logout}">Logout</a>
+>>>>>>> eb8c211 (更新):src/main/resources/templates/blog-register.html
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>ブログ投稿</h1>
+    <div class="register-card">
+      <form id="register-form" th:action="@{/blog/register}" method="post" enctype="multipart/form-data">
+        <label for="title">タイトル：</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="category">カテゴリ：</label>
+        <input type="text" id="category" name="category" required>
+
+        <label for="image">画像アップロード：</label>
+        <input type="file" id="image" name="image" accept="image/*">
+
+        <label for="article">記事本文：</label>
+        <textarea id="article" name="article" rows="8" required></textarea>
+
+        <div class="form-buttons">
+          <button type="submit">投稿する</button>
+          <button type="button" class="back-btn" onclick="location.href='/home'">戻る</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+</html>

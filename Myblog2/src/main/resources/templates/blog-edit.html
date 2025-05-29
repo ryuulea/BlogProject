@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ブログ編集</title>
+  <link rel="stylesheet" href="blog-style.css">
+  <link rel="stylesheet" href="nav-style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="menu-left">LeaRyuu</div>
+      <nav class="menu-right">
+        <a href="home.html">Home</a>
+        <a href="blog-register.html">投稿する</a>
+        <a href="blog-list.html">一覧表示</a>
+        <a href="register.html">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>ブログ編集</h1>
+    <div class="edit-card">
+      <form id="edit-form" action="/blog/edit" method="post" enctype="multipart/form-data">
+        <label for="title">タイトル：</label>
+        <input type="text" id="title" name="title" value="" required>
+
+        <label for="category">カテゴリ：</label>
+        <input type="text" id="category" name="category" value="" required>
+
+        <label for="image">画像アップロード：</label>
+        <input type="file" id="image" name="image" accept="image/*">
+
+        <label for="article">本文：</label>
+        <textarea id="article" name="article" rows="6" required></textarea>
+        <div class="form-buttons">
+          <button type="submit">更新する</button>
+          <button type="button" class="back-btn" onclick="history.back();">戻る</button>
+        </div>
+      </form>
+
+      <form id="delete-form" action="/blog/delete" method="post">
+        <input type="hidden" name="id" value="">
+        <button type="submit" form="delete-form">削除する</button>
+       
+      </form>
+
+      <div class="form-buttons">
+      
+       
+      </div>
+    </div>
+  </main>
+
+  <p class="copyright">LeaRyuu&copy; 2025</p>
+</body>
+</html>

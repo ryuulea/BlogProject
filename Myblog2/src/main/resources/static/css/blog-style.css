@@ -1,0 +1,236 @@
+/* ===== blog-style.css ===== */
+
+/* 1. 整体布局 & 背景 */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #a779cc, #84b0dc, #eab9dc);
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    padding-top: 80px;
+  }
+  
+  /* 2. 主体撑满 */
+  main {
+    flex: 1;
+  }
+  
+  /* 3. 全局标题 */
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: rgb(250, 244, 172);
+  }
+  
+  /* 4. 列表页文章卡片 */
+  .blog-item {
+    background: #fff5f8;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  .blog-item img.item-image {
+    width: 100%;
+    display: block;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  .blog-item h2 {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0 15px;
+  }
+  .blog-item p {
+    margin: 8px 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .blog-item button {
+    display: block;
+    margin: 20px auto 30px;
+    padding: 10px 30px;
+    background: #a855f7;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color .3s, opacity .3s;
+  }
+  .blog-item button:hover {
+    background: #9333ea;
+    opacity: 0.9;
+  }
+  
+  /* 5. 版权 */
+  copyright, .copyright {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    color: gray;
+    background: rgba(255,255,255,0.5);
+  }
+  
+  /* 6. 通用卡片容器 */
+  .register-card,
+  .edit-card {
+    background: #fff5f8;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;      /* 只有上下 20px，去掉底部多余空 */
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* 7. 字段上下排列 */
+  .register-card form label,
+  .register-card form input,
+  .register-card form textarea,
+  .edit-card form label,
+  .edit-card form input,
+  .edit-card form textarea {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    box-sizing: border-box;
+  }
+  
+  /* 7.1 文件上传 & 日期选择 */
+  .register-card form input[type="file"],
+  .edit-card form input[type="file"],
+  .edit-card form input[type="date"] {
+    padding: 10px;
+    border: 2px solid #c084fc;
+    border-radius: 10px;
+  }
+  
+  /* 7.2 隐藏残留 <br> */
+  .register-card form br,
+  .edit-card form br {
+    display: none;
+  }
+  
+  /* 8. 按钮组统一 */
+  .form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .form-buttons button {
+    display: inline-block;
+    padding: 10px 30px;
+    background: #a855f7;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .3s, opacity .3s;
+  }
+  .form-buttons .back-btn {
+    background: #718096 !important;
+  }
+  .form-buttons button:hover {
+    background: #a986ca;
+    opacity: 0.9;
+  }
+  /* ===== 统一所有字段为紫色圆角 ===== */
+.register-card input[type="text"],
+.register-card input[type="file"],
+.register-card textarea,
+.edit-card input[type="text"],
+.edit-card input[type="file"],
+.edit-card textarea {
+  border: 2px solid #c084fc;   /* 紫色边框 */
+  border-radius: 15px;         /* 大圆角 */
+  padding: 10px;               /* 和文件上传框一样的内边距 */
+  box-sizing: border-box;
+}
+
+/* 去掉原来 <input type="file"> 默认样式干扰 */
+.register-card input[type="file"],
+.edit-card input[type="file"] {
+  background: transparent;
+}
+
+/* focus 时高亮同色系 */
+.register-card input:focus,
+.register-card textarea:focus,
+.edit-card input:focus,
+.edit-card textarea:focus {
+  outline: none;
+  border-color: #9333ea;       /* 深紫色高亮 */
+}
+/* === 编辑页面按钮组优化 === */
+/* 1. 更新/戻る 按钮放到同一行 */
+.edit-card form#edit-form {
+  margin-bottom: 0;               /* 去掉底部多余间距 */
+}
+.edit-card form#edit-form .form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;               /* 紧贴表单 */
+}
+
+/* 2. 删除按钮（同卡片） */
+.edit-card form#delete-form {
+  margin-top: 16px;               /* 和上面按钮组保持一致间距 */
+  text-align: center;
+}
+.edit-card form#delete-form button {
+  padding: 10px 30px;
+  background-color: #e53e3e;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color .3s, opacity .3s;
+}
+.edit-card form#delete-form button:hover {
+  background-color: #d32f2f;
+  opacity: 0.9;
+}
+
+/* 3. 统一更新/戻る 按钮配色与圆角 */
+.edit-card form#edit-form button[type="submit"] {
+  background-color: #a855f7;
+  color: #fff;
+}
+.edit-card form#edit-form .back-btn {
+  background-color: #718096;
+  color: #fff;
+}
+.edit-card form#edit-form button {
+  border-radius: 20px;
+  padding: 10px 30px;
+  font-size: 16px;
+  transition: background-color .3s, opacity .3s;
+}
+.edit-card form#edit-form button:hover {
+  opacity: 0.9;
+}
+
+/* 4. 强制把 edit-form 中的按钮移入 .form-buttons 容器 */
+.edit-card form#edit-form > button {
+  display: none;
+}
+
+
+/* 5. 可选：如果你不想改 HTML，也可以这样把两个按钮强制搬家 */
+.edit-card form#edit-form > button[type="submit"] {
+  position: relative;
+  top: auto; left: auto;
+}

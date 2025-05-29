@@ -1,0 +1,73 @@
+/* 全体背景：パープルグラデ */
+body {
+    background: linear-gradient(to bottom right, #d398de, #f8f4fc);
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* フォームコンテナ */
+form {
+    background-color: #eee8eecc;
+    width: 400px;
+    padding: 30px;
+    border: 5px dotted #a63fc2; 
+    border-radius: 30px; 
+    text-align: center;
+}
+
+/* 見出し */
+h1 {
+    color: #d872b3;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+/* ラベル */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* 入力フィールド */
+input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #c084fc;
+    border-radius: 15px;
+    outline: none;
+}
+
+/* ボタン */
+button {
+    width: 80%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ad76a3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ボタンホバー */
+button:hover {
+    background-color: #bc82f3;
+    transform: scale(1.05);
+}
+
+/* 著作権表記 */
+.copyright {
+    font-size: 12px;
+    color: rgb(122, 145, 180);
+    margin-top: 20px;
+    text-align: center;
+}
